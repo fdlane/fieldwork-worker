@@ -2,10 +2,12 @@
   <h1>Fieldwork Worker</h1>
 </div>
 
+{{log session.currentUser}}
+
+{{outlet}}
+
 {{#if session.isAuthenticated}}
 
   <button {{action 'logout'}}>Logout</button>
 
 {{/if}}
-
-{{outlet}}
