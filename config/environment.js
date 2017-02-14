@@ -24,12 +24,16 @@ module.exports = function(environment) {
     storageBucket: 'pstcc2017fieldwork.appspot.com',
   },
 
+  torii: {
+    sessionServiceName: 'session'
+  },
+
 
   // if using ember-cli-content-security-policy
   contentSecurityPolicy: {
     'script-src': "'self' 'unsafe-eval' apis.google.com",
     'frame-src': "'self' https://*.firebaseapp.com",
-    'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com"
   },
 
     APP: {
