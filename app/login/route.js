@@ -16,6 +16,10 @@ export default Ember.Route.extend({
         this.transitionTo('protected');
 
       });
+    },
+
+    forgotPassword() {
+      this.transitionTo('password-reset');
     }
   }
 

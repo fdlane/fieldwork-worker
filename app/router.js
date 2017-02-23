@@ -9,7 +9,6 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('protected');
-  this.route('login-form');
 });
 
 export default Router;

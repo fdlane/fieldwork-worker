@@ -5,21 +5,18 @@ moduleForComponent('login-form', 'Integration | Component | login form', {
   integration: true
 });
 
-test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('userEmail and userPassword take user input', function(assert) {
 
   this.render(hbs`{{login-form}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  this.$('#userEmail').val('jane.doe@gmail.com');
+  this.$('#userEmail').change();
 
-  // Template block usage:
-  this.render(hbs`
-    {{#login-form}}
-      template block text
-    {{/login-form}}
-  `);
+  assert.equal(this.$('#userEmail').val(), 'jane.doe@gmail.com');
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.$('#userPassword').val('password');
+  this.$('#userPassword').change();
+
+  assert.equal(this.$('#userPassword').val(), 'password');
+
 });

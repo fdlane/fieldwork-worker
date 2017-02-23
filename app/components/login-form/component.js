@@ -5,8 +5,12 @@ export default Ember.Component.extend({
     actions: {
       login() {
 
-        this.sendAction('action', this.get('userEmail'), this.get('userPassword'));
+        this.sendAction('login', this.get('userEmail'), this.get('userPassword'));
 
+      },
+
+      forgotPassword() {
+        this.sendAction('forgotPassword');
       }
     }
 });

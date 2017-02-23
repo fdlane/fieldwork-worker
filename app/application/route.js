@@ -10,16 +10,18 @@ export default Ember.Route.extend({
         this.transitionTo('login');
       }
     });
-    
+
   },
+
 
   actions: {
 
     logout() {
 
-      this.get('session').close().then(function() {
+      this.get('session').close().then(() => {
         this.transitionTo('login');
-      }.bind(this));
+      });
+
     }
   }
 
