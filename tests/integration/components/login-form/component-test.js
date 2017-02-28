@@ -5,18 +5,16 @@ moduleForComponent('login-form', 'Integration | Component | login form', {
   integration: true
 });
 
-test('userEmail and userPassword take user input', function(assert) {
+test('login action fires', function(assert) {
 
-  this.render(hbs`{{login-form}}`);
+  this.loginAction = (username, password) => {
+    assert.equal(username, 'username');
+    assert.equal(password, 'password');
+  };
 
-  this.$('#userEmail').val('jane.doe@gmail.com');
-  this.$('#userEmail').change();
+  this.render(hbs`{{login-form login=(action loginAction)}}`);
 
-  assert.equal(this.$('#userEmail').val(), 'jane.doe@gmail.com');
-
-  this.$('#userPassword').val('password');
-  this.$('#userPassword').change();
-
-  assert.equal(this.$('#userPassword').val(), 'password');
-
+  this.$('input[type=text]').val('username').change();
+  this.$('input[type=password]').val('password').change();
+  this.$('button').click();
 });
