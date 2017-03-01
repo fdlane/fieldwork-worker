@@ -1,3 +1,17 @@
+<div class="jumbotron text-center">
+  <h1>Fieldwork Worker</h1>
+</div>
+
+{{log session.currentUser}}
+
 {{outlet}}
 
-{{hello-world}}
+{{#if session.isAuthenticated}}
+
+  <button {{action 'logout'}}>Logout</button>
+
+  <br><br>
+
+  
+
+{{/if}}
