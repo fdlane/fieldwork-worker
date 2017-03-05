@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     this.get('session').fetch().catch((error) => {
       if(error) {
         console.log("Error fetching session: " + error);
-        this.transitionTo('login');
+        //this.transitionTo('login');
       }
     });
 
@@ -19,6 +19,8 @@ export default Ember.Route.extend({
     logout() {
 
       this.get('session').close().then(() => {
+        localStorage['displayName'] = null;
+        localStorage['UID'] = null;
         this.transitionTo('login');
       });
 
