@@ -1,16 +1,19 @@
 function FieldworkWorker() {
+
+};
+
+FieldworkWorker.prototype.initFielworkWorker = function(email, password) {
   this.checkSetup();
+  this.initFirebase(email, password);
   this.jobList = document.getElementById('jobList');
   this.userHeader = document.getElementById('userHeader');
-
-  this.initFirebase();
   this.userHeader.innerHTML = "Jobs for " + localStorage.displayName;
   this.loadJobs();
-}
+};
 
-FieldworkWorker.prototype.initFirebase = function() {
+FieldworkWorker.prototype.initFirebase = function(email, password) {
   this.auth = firebase.auth();
-  this.auth.signInWithEmailAndPassword(localStorage['email'], localStorage['password']);
+  this.auth.signInWithEmailAndPassword(email, password);
   this.database = firebase.database();
   this.storage = firebase.storage();
 };
