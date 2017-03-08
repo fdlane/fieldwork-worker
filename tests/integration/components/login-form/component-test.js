@@ -14,7 +14,7 @@ test('login action fires', function(assert) {
 
   this.render(hbs`{{login-form login=(action loginAction)}}`);
 
-  this.$('input[type=text]').val('username').change();
+  this.$('input[type=email]').val('username').change();
   this.$('input[type=password]').val('password').change();
   this.$('button').click();
 });
