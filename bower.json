@@ -2,6 +2,7 @@
   "name": "fieldwork-worker",
   "dependencies": {
     "semantic-ui": "^2.2.7",
-    "firebase": "^3.0.0"
+    "firebase": "^3.0.0",
+    "bootstrap": "^3.3.7"
   }
 }

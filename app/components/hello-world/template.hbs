@@ -1,12 +1,12 @@
 {{yield}}
 
-<div class="text-center">
-  <h3 id="userHeader" class="display-3"></h3>
-</div>
+<br>
+<br>
+Username:  {{currentUser.username}}
+<br>
+<br>
 
-<div class="col-lg-12 col-md-12 col-xs-12">
-  <div lass="btn-group-vertical">
-    <ul id="jobList" class="list-unstyled" style="width: 300px; margin: auto;">
-    </ul>
-  </div>
-</div>
+{{#each model.jobs as |job|}}
+{{job.metaId}}
+<br>
+{{/each}}

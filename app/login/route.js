@@ -2,32 +2,33 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  actions: {
+  redirect() {
+    if (this.get('session.isAuthenticated')) {
+      this.transitionTo('protected');
+    }
+  },
 
+  actions: {
     login(email, password) {
-      this.get('session').open('firebase', {
+      let session = this.get('session');
+      session.open('firebase', {
         provider: 'password',
         email,
         password
-
-      }).then(data => {
-        localStorage['displayName'] = data['currentUser']['displayName'];
-        localStorage['UID'] = data['currentUser']['uid'];
-
-        this.transitionTo('protected').then(function (){
-          Ember.run.schedule('afterRender', self, function () {
-                window.fieldworkWorker.initFielworkWorker(email, password);
-          });
-
-        });
+      }).then(() => {
+        let user = session.content.currentUser;
+        let email = user.email;
+        let username = email.substring(0, email.indexOf('@'));
+        user.username = username;
+        this.set('currentUser.content', user);
+        debugger;
+        this.transitionTo('protected');
       });
     },
-
     forgotPassword() {
 
       this.transitionTo('password-reset');
 
-    }
-  }
-
+    },
+  },
 });
