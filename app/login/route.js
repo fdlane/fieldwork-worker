@@ -21,7 +21,6 @@ export default Ember.Route.extend({
         let username = email.substring(0, email.indexOf('@'));
         user.username = username;
         this.set('currentUser.content', user);
-        debugger;
         this.transitionTo('protected');
       });
     },
