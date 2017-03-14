@@ -12,9 +12,11 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "postinstall": "bower install"
   },
   "devDependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.4.1",
     "ember-cli": "2.11.0",
@@ -37,17 +39,16 @@
     "ember-resolver": "^2.0.3",
     "ember-source": "^2.11.0",
     "ember-welcome-page": "^2.0.2",
-    "emberfire": "2.0.5",
-    "loader.js": "^4.0.10",
-    "semantic-ui": "2.2.7",
-    "semantic-ui-ember": "2.0.1",
-    "torii": "0.8.1"
+    "loader.js": "^4.0.10"
   },
   "engines": {
     "node": ">= 0.12.0"
   },
   "private": true,
   "dependencies": {
-    "firebase": "^3.6.10"
+    "ember-bootstrap": "1.0.0-alpha.5",
+    "emberfire": "2.0.6",
+    "firebase": "^3.6.10",
+    "torii": "0.8.1"
   }
 }

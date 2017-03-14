@@ -1,4 +1,37 @@
-{{input type = "text" value = userEmail placeholder = "Email"}} <br>
-{{input type="password" value = userPassword placeholder = "Password"}} <br>
+<div class="container text-center">
 
-<button {{action 'login'}}>Login</button>
+  <div class="row" >
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      <section class="login-form">
+        <form method="post" action="#" role="login">
+          <img src="{{rootURL}}assets/images/kub.png" height="100" width="100" class="img-responsive" alt="" />
+          <!-- Amber div tag -->
+          <div> </div>
+          {{input type="email" value = userEmail placeholder="Email" required=true class="form-control input-lg"  }}
+
+          {{input type="password" value = userPassword class="form-control input-lg"  placeholder="Password" required="" }}
+
+          <div class="pwstrength_viewport_progress"></div>
+
+          <button {{action 'login'}} class="btn btn-lg btn-primary btn-block">Sign in</button>
+          <div>
+            <a href="#">Forgot password?</a>
+          </div>
+          <br>
+          <div>
+            <a href="#">Contact administrator</a>
+          </div>
+        </form>
+
+        <div class="form-links">
+          <a href="https://www.kub.org">www.kub.org</a>
+        </div>
+      </section>
+      </div>
+
+      <div class="col-md-4"></div>
+
+  </div>
+</div>
