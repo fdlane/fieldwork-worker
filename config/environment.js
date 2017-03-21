@@ -17,7 +17,7 @@ module.exports = function(environment) {
       }
     },
 
-  firebase: {
+  firebase:  {
     apiKey: 'AIzaSyBqSKx49L3USjMlIfIhFKFNN3eiEh_roo0',
     authDomain: 'pstcc2017fieldwork.firebaseapp.com',
     databaseURL: 'https://pstcc2017fieldwork.firebaseio.com',
@@ -27,12 +27,6 @@ module.exports = function(environment) {
   torii: {
     sessionServiceName: 'session',
     providers: {
-      'firebase': {
-        apiKey: 'AIzaSyBqSKx49L3USjMlIfIhFKFNN3eiEh_roo0',
-        authDomain: 'pstcc2017fieldwork.firebaseapp.com',
-        databaseURL: 'https://pstcc2017fieldwork.firebaseio.com',
-        storageBucket: 'pstcc2017fieldwork.appspot.com',
-      }
     }
   },
 
