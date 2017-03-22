@@ -29,11 +29,13 @@
         <div class="row">
             {{#jobs-table}}
               {{#each model.jobs as |job|}}
-                <tr>
-                    <td>{{job.location}}</td>
-                    <td>{{job.editedDate}}</td>
-                    <td>{{job.createdBy}}</td>
-                </tr>
+                {{#if job.isActive}}
+                  <tr>
+                      <td>{{job.location}}</td>
+                      <td>{{job.editedDate}}</td>
+                      <td>{{job.createdBy}}</td>
+                  </tr>
+                {{/if}}
               {{/each}}
             {{/jobs-table}}
         </div>
