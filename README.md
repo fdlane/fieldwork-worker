@@ -44,7 +44,15 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+* `npm install -g firebase-tools`
+
+* `ember install ember-cli-deploy`
+
+* `ember install ember-cli-deploy-firebase-pack`
+
+* `firebase init`
+
+* `ember deploy production`
 
 ## Further Reading / Useful Links
 
