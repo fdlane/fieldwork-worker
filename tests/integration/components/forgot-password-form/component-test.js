@@ -5,21 +5,15 @@ moduleForComponent('forgot-password-form', 'Integration | Component | forgot pas
   integration: true
 });
 
-test('it renders', function(assert) {
+test('forgot password action fires', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.resetPasswordAction = (email) => {
+    assert.equal(email, 'email');
+  };
 
-  this.render(hbs`{{forgot-password-form}}`);
+  this.render(hbs`{{forgot-password-form action=resetPasswordAction}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  this.$('input[type=email]').val('email').change();
 
-  // Template block usage:
-  this.render(hbs`
-    {{#forgot-password-form}}
-      template block text
-    {{/forgot-password-form}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.$('button').click();
 });
