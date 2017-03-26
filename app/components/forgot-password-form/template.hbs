@@ -1,0 +1,33 @@
+<div class="row">
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+        <section class="password-reset-form">
+            <form method="post" action="#" role="login">
+                <img src="{{rootURL}}assets/images/kub.png" height="100" width="100" class="img-responsive" alt="" />
+
+                {{#if displaySuccess}}
+                  <div class="alert alert-info"><p class="text-center"><strong>Success!</strong></p>
+                      <p class="text-center"> A reset password link has been sent to the email provided. <br><br>
+                        <a class="centerLink">{{#link-to "login"}}Return to login{{/link-to}}</a>
+                      </p>
+                  </div>
+
+                {{else if displayError}}
+                  <div class="alert alert-danger"><p class="text-center"><strong>Error!</strong></p>
+                      <p class="text-center">Please contact adiministrator. Provided email doesn't exist in our database. </p>
+                  </div>
+                {{/if}}
+
+                {{#unless displaySuccess}}
+                  <p class="text-center"> Please provide your email address to receive a password recovery link. </p>
+                  {{input type="email" value=userEmail placeholder="Email" required=true class="form-control input-lg"}}
+                  <button {{action 'resetPassword'}} type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+                {{/unless}}
+            </form>
+        </section>
+    </div>
+
+    <div class="col-md-4"></div>
+</div>

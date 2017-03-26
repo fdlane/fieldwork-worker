@@ -22,8 +22,21 @@ export default Ember.Route.extend({
         user.username = username;
         this.set('currentUser.content', user);
         this.transitionTo('protected');
-      });
+      },
+    (error) => {
+      if(error) {
+        this.controller.set('invalidCredentials', true);
+      }
+
+    });
     },
+
+    willTransition(transition) {
+      if(transition) {
+        this.controller.set('invalidCredentials', false);
+      }
+    },
+
     forgotPassword() {
 
       this.transitionTo('password-reset');
