@@ -7,8 +7,18 @@
       <section class="login-form">
         <form method="post" action="#" role="login">
           <img src="{{rootURL}}assets/images/kub.png" height="100" width="100" class="img-responsive" alt="" />
-          <!-- Amber div tag -->
-          <div> </div>
+
+          <!-- User input error message -->
+           <div class="alert alert-danger" style="display:{{error}}">
+              <strong>Error!</strong>
+              <p>Provided email or password are incorrect.</p>
+           </div>
+
+           <!--<div class="alert alert-danger">
+              <strong>Error!</strong>
+              <p>Provided email doesn't exist in our database. Please, contact admistrator.</p>
+           </div>-->
+
           {{input type="email" value = userEmail placeholder="Email" required=true class="form-control input-lg"  }}
 
           {{input type="password" value = userPassword class="form-control input-lg"  placeholder="Password" required=true }}
