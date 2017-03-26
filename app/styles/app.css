@@ -23,6 +23,10 @@ over-ride "Weak" message, show font in dark grey
     @include box-sizing(border-box);
 }
 
+.centerLink {
+  margin: 0 auto;
+}
+
 body {
     background: #CCC;
     -webkit-background-size: cover;

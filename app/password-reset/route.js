@@ -7,10 +7,14 @@ actions: {
 
     const auth = this.get('firebaseApp').auth();
     auth.sendPasswordResetEmail(userEmail).then(() => {
-      this.transitionTo('login');
+      this.controller.set('displayError', false);
+      this.controller.set('displaySuccess', true);
     },
     (error) => {
-      console.log(error);
+      if(error) {
+        this.controller.set('displayError', true);
+        this.controller.set('displaySuccess', false);
+      }
     });
 
   },
