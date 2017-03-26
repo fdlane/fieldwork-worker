@@ -25,7 +25,7 @@ export default Ember.Route.extend({
       },
     (error) => {
       if(error) {
-        this.controller.set('invalidCredentials', 'block');
+        this.controller.set('invalidCredentials', true);
       }
 
     });
@@ -33,7 +33,7 @@ export default Ember.Route.extend({
 
     willTransition(transition) {
       if(transition) {
-        this.controller.set('invalidCredentials', 'none');
+        this.controller.set('invalidCredentials', false);
       }
     },
 

@@ -9,11 +9,12 @@
           <img src="{{rootURL}}assets/images/kub.png" height="100" width="100" class="img-responsive" alt="" />
 
           <!-- User input error message -->
-           <div class="alert alert-danger" style="display:{{error}}">
-              <strong>Error!</strong>
-              <p>Provided email or password are incorrect.</p>
-           </div>
-
+          {{#if displayError}}
+             <div class="alert alert-danger">
+                <strong>Error!</strong>
+                <p>Email/password is incorrect.</p>
+             </div>
+            {{/if}}
            <!--<div class="alert alert-danger">
               <strong>Error!</strong>
               <p>Provided email doesn't exist in our database. Please, contact admistrator.</p>
