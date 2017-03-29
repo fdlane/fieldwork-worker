@@ -1,0 +1,13 @@
+<tr {{action 'toggleModal'}}>
+    <td>{{location}}</td>
+    <td>{{editedDate}}</td>
+    <td>{{createdBy}}</td>
+</tr>
+
+{{#if enabled}}
+    {{#job-details-modal title="--Job Details Modal--"}}
+      {{location}}
+      {{editedDate}}
+      {{createdBy}}
+    {{/job-details-modal}}
+{{/if}}

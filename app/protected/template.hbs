@@ -30,16 +30,13 @@
             {{#jobs-table}}
               {{#each model.jobs as |job|}}
                 {{#if job.isActive}}
-                  <tr>
-                      <td>{{job.location}}</td>
-                      <td>{{job.editedDate}}</td>
-                      <td>{{job.createdBy}}</td>
-                  </tr>
+                  {{job-row location=job.location editedDate=job.editedDate createdBy=job.createdBy}}
                 {{/if}}
               {{/each}}
             {{/jobs-table}}
         </div>
     </div>
+
 </body>
 
 
