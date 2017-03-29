@@ -2,13 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-  enabled: false,
+  tagName: '',
 
   actions: {
 
-    toggleModal() {
-      this.toggleProperty('enabled');
+    toggleModal(job) {
+      this.sendAction('action', job);
     }
   }
-  
+
 });

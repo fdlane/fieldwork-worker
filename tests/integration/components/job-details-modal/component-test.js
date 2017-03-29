@@ -5,21 +5,10 @@ moduleForComponent('job-details-modal', 'Integration | Component | job details m
   integration: true
 });
 
-test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('renders', function(assert) {
 
   this.render(hbs`{{job-details-modal}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#job-details-modal}}
-      template block text
-    {{/job-details-modal}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(true);
 });

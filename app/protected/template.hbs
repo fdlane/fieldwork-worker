@@ -7,9 +7,18 @@
             {{#jobs-table}}
               {{#each model.jobs as |job|}}
                 {{#if job.isActive}}
-                  {{job-row location=job.location editedDate=job.editedDate createdBy=job.createdBy}}
+                  {{job-row job=job action="toggleModal"}}
                 {{/if}}
               {{/each}}
             {{/jobs-table}}
         </div>
     </div>
+
+        {{#job-details-modal class="modal" metaId=metaId}}
+          <tr>Location: {{location}}</tr>
+          <tr>Current Status: {{status}}</tr>
+          <tr></tr>
+          <tr>Contact Info: {{contactInfo}}</tr>
+          <tr></tr>
+          <tr>Description: {{description}}</tr>
+        {{/job-details-modal}}

@@ -5,21 +5,14 @@ moduleForComponent('job-row', 'Integration | Component | job row', {
   integration: true
 });
 
-test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('toggleModal action fires', function(assert) {
 
-  this.render(hbs`{{job-row}}`);
+  this.toggleModalAction = () => {
+    assert.ok(true);
+  };
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs`{{job-row action=toggleModalAction}}`);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#job-row}}
-      template block text
-    {{/job-row}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.$('tr').click();
 });
