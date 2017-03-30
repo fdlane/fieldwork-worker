@@ -8,4 +8,11 @@ export default DS.Model.extend({
     location: DS.attr('string'),
     metaId: DS.attr('string'),
     isActive: DS.attr('boolean'),
+    description: DS.attr('string'),
+    createdDate: DS.attr('string'),
+    contactInfo: DS.attr('string'),
+    category: DS.attr('string'),
+    scheduleDate: DS.attr('string'),
+    status: DS.attr('string'),
+    jobImage: DS.attr('string'),
 });
