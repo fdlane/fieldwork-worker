@@ -16,7 +16,7 @@
     "postinstall": "bower install"
   },
   "devDependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "^3.3.7",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.4.1",
     "ember-cli": "2.11.0",
@@ -48,7 +48,6 @@
   },
   "private": true,
   "dependencies": {
-    "ember-bootstrap": "1.0.0-alpha.5",
     "emberfire": "2.0.6",
     "firebase": "^3.6.10",
     "torii": "0.8.1"
