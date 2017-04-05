@@ -5,7 +5,6 @@ export default Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-    this.getFile();
   },
   imagePathObserver: Ember.observer('jobImage', function() {
     this.getFile();
