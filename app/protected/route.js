@@ -20,7 +20,7 @@ export default Ember.Route.extend({
       this.controller.set('description', job.get('description'));
       this.controller.set('status', job.get('status'));
       this.controller.set('location', job.get('location'));
-
+      this.controller.set('jobImage', job.get('jobImage'));
     }
 
   }
