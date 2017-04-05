@@ -5,10 +5,10 @@ moduleForComponent('job-details-modal', 'Integration | Component | job details m
   integration: true
 });
 
-
+/*
 test('renders', function(assert) {
 
   this.render(hbs`{{job-details-modal}}`);
 
   assert.ok(true);
-});
+});*/
