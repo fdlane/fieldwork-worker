@@ -4,7 +4,7 @@
            <div class="modal-content">
                <div class="modal-header">
                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
-                   <h4 class="modal-title"><i class="text-muted fa fa-user-circle"></i> <strong>{{metaId}}</strong> - Job Name </h4>
+                   <h4 class="modal-title"><i class="text-muted fa fa-user-circle"></i> <strong>{{job.metaId}}</strong> - Job Name </h4>
 
                    <!-- Camera Button -->
                    <button type="button" class="btn btn-primary btn-sm center-block"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></button>
@@ -28,13 +28,13 @@
 
                <!-- Job Status -->
                <div>
-                   <button type="button" class="btn btn-secondary btn-lg btn-block">Here goes current job status</button>
+                   <button type="button" class="btn btn-secondary btn-lg btn-block">{{job.status}}</button>
                </div>
 
                <div class="modal-footer">
 
                    <!-- Status button -->
-                   <button type="button" class="btn btn-primary btn-sm center-block">Status button</button>
+                   <button type="button" class="btn btn-primary btn-sm center-block"{{action 'changeStatus'}}>Status button</button>
                </div>
            </div>
        </div>

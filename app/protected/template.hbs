@@ -14,11 +14,11 @@
         </div>
     </div>
 
-        {{#job-details-modal class="modal" metaId=metaId jobImage=jobImage}}
-          <tr>Location: {{location}}</tr>
-          <tr>Current Status: {{status}}</tr>
+        {{#job-details-modal class="modal" job=job jobImage=jobImage status=status changeStatus='changeStatus'}}
+          <tr>Location: {{job.location}}</tr>
+          <tr>Current Status: {{job.status}}</tr>
           <tr></tr>
-          <tr>Contact Info: {{contactInfo}}</tr>
+          <tr>Contact Info: {{job.contactInfo}}</tr>
           <tr></tr>
-          <tr>Description: {{description}}</tr>
+          <tr>Description: {{job.description}}</tr>
         {{/job-details-modal}}
