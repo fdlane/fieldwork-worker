@@ -2,7 +2,6 @@ import Ember from 'ember';
 import firebase from 'firebase';
 
 export default Ember.Component.extend({
-
   init() {
     this._super(...arguments);
   },
@@ -17,5 +16,10 @@ export default Ember.Component.extend({
       this.set('imageUrl', url);
     });
   },
-
+  actions:{
+    changeStatus(){
+      console.log('changeStatus fired from modal component');
+      this.sendAction('changeStatus');
+    },
+  }
 });
