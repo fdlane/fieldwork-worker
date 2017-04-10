@@ -11,6 +11,7 @@ export default Ember.Route.extend({
   actions: {
     login(email, password) {
       let session = this.get('session');
+      this.intermediateTransitionTo('login.loading');
       session.open('firebase', {
         provider: 'password',
         email,
@@ -22,13 +23,12 @@ export default Ember.Route.extend({
         user.username = username;
         this.set('currentUser.content', user);
         this.transitionTo('protected');
-      },
-    (error) => {
-      if(error) {
-        this.controller.set('invalidCredentials', true);
-      }
-
-    });
+      }, error => {
+        if(error) {
+          this.controller.set('invalidCredentials', true);
+        }
+        this.intermediateTransitionTo('login');
+      });
     },
 
     willTransition(transition) {

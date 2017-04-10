@@ -20,20 +20,28 @@
               <p>Provided email doesn't exist in our database. Please, contact admistrator.</p>
            </div>-->
 
-          {{input type="email" value = userEmail placeholder="Email" required=true class="form-control input-lg"  }}
+          {{#if loading}}
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+          {{else}}
+            {{input type="email" value = userEmail placeholder="Email" required=true class="form-control input-lg"  }}
 
-          {{input type="password" value = userPassword class="form-control input-lg"  placeholder="Password" required=true }}
+            {{input type="password" value = userPassword class="form-control input-lg"  placeholder="Password" required=true }}
 
-          <div class="pwstrength_viewport_progress"></div>
+            <div class="pwstrength_viewport_progress"></div>
 
-          <button {{action 'login'}} type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-          <div>
-            <a href="#" {{action 'forgotPassword'}}>Forgot password?</a>
-          </div>
-          <br>
-          <div>
-            <a href="#">Contact administrator</a>
-          </div>
+            <button {{action 'login'}} type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+            <div>
+              <a href="#" {{action 'forgotPassword'}}>Forgot password?</a>
+            </div>
+            <br>
+            <div>
+              <a href="#">Contact administrator</a>
+            </div>
+          {{/if}}
         </form>
 
         <div class="form-links">
