@@ -38,6 +38,7 @@
     "ember-data": "^2.11.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.6.0",
+    "ember-models-table": "1.11.0",
     "ember-resolver": "^2.0.3",
     "ember-source": "^2.11.0",
     "ember-welcome-page": "^2.0.2",
@@ -48,6 +49,8 @@
   },
   "private": true,
   "dependencies": {
+    "ember-file-upload": "^2.0.0-beta.38",
+    "ember-models-table": "1.11.0",
     "emberfire": "2.0.6",
     "firebase": "^3.6.10",
     "torii": "0.8.1"

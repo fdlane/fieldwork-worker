@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
+  jobService: Ember.inject.service('job'),
+
   model() {
       return Ember.RSVP.hash({
           jobs: this.store.query('job', {
@@ -8,6 +11,10 @@ export default Ember.Route.extend({
               equalTo: this.get('currentUser.username'),
           }),
       });
+  },
+
+  afterModel(model) {
+      this.set('jobService.jobs', model.jobs);
   },
 
   updateStatus() {
