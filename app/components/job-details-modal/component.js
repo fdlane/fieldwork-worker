@@ -16,10 +16,27 @@ export default Ember.Component.extend({
       this.set('imageUrl', url);
     });
   },
+
+  buttonText: 'pending',
   actions:{
-    changeStatus(){
-      console.log('changeStatus fired from modal component');
-      this.sendAction('changeStatus');
+    changeStatus(job){
+    this.sendAction('changeStatus');
+    switch(job.get('status')){
+      case 'pending':
+        this.set('buttonText','acknowledged');
+        break;
+      case 'acknowledged':
+        this.set('buttonText','en route');
+        break;
+      case 'en route':
+        this.set('buttonText','arrived');
+        break;
+      case 'arrived':
+        this.set('buttonText','completed');
+        break;
+      case 'completed':
+        break;
+      }
     },
   }
 });

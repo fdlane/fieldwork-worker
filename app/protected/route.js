@@ -11,10 +11,24 @@ export default Ember.Route.extend({
   },
 
   updateStatus() {
-    //Pending, Acknowledged, EnRoute, Arrived, Complete
-    //TODO: Data structure to decide next status
-    //TODO: Change button text to next status
-    this.controller.get('job').set('status', 'Complete');
+    this.controller.set('newStatus', '');
+    switch(this.controller.get('job').get('status')){
+      case 'pending':
+        this.controller.set('newStatus','acknowledged');
+        break;
+      case 'acknowledged':
+          this.controller.set('newStatus','en route');
+          break;
+      case 'en route':
+        this.controller.set('newStatus','arrived');
+        break;
+      case 'arrived':
+        this.controller.set('newStatus','completed');
+        break;
+      case 'completed':
+        break;
+    }
+    this.controller.get('job').set('status', this.controller.get('newStatus'));
     this.controller.get('job').save();
   },
 
@@ -25,8 +39,6 @@ export default Ember.Route.extend({
       this.controller.set('job', job);
     },
     changeStatus(){
-      console.log('changeStatus fired from protected route');
-      console.log('JOB: ' + this.controller.get('job'));
       this.store.findRecord('job', this.controller.get('job').get('id')).then(this.updateStatus());
     }
   }
