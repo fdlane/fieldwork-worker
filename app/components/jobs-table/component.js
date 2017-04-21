@@ -44,6 +44,14 @@ export default Ember.Component.extend({
 
   actions: {
     selectJob(table) {
+
+      let row = Ember.$(event.target).parent();
+
+      if(".modal" !== row.attr('data-target')) {
+        row.attr("data-toggle",'modal');
+        row.attr("data-target", '.modal');
+      }
+
       this.get('jobService').selectJob(table);
     },
   }

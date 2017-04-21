@@ -3,9 +3,8 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 
   jobs: [],
-  selectedJobs: Ember.computed.alias('tableState.selectedItems'),
+  selectedJob: Ember.computed.alias('tableState.selectedItems.firstObject'),
   hasSelectedJob: Ember.computed.notEmpty('selectedJobs'),
-
   statuses: ["Pending", "En Route", "Arrived", "Completed"],
 
   buttonText: "",
@@ -33,12 +32,12 @@ export default Ember.Service.extend({
   selectJob(tableState) {
 
       this.set('tableState', tableState);
-
-      let job = this.get('selectedJobs');
+      let job = this.get('selectedJob');
       let currentStatus = job.get('status');
 
       this.set('buttonText', currentStatus);
-
+      let metaId = job.get('metaId');
+      this.set('metaId', metaId);
   },
 
   assignJob() {

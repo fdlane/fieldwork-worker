@@ -4,21 +4,8 @@
             {{search-box}}
         </div>
         <div class="row">
-            {{#jobs-table}}
-              {{#each model.jobs as |job|}}
-                {{#if job.isActive}}
-                  {{job-row job=job action="toggleModal"}}
-                {{/if}}
-              {{/each}}
-            {{/jobs-table}}
+            {{jobs-table}}
         </div>
     </div>
 
-        {{#job-details-modal class="modal" job=job jobImage=jobImage status=status changeStatus='changeStatus'}}
-          <tr>Location: {{job.location}}</tr>
-          <tr>Current Status: {{job.status}}</tr>
-          <tr></tr>
-          <tr>Contact Info: {{job.contactInfo}}</tr>
-          <tr></tr>
-          <tr>Description: {{job.description}}</tr>
-        {{/job-details-modal}}
+        {{job-details-modal class="modal" jobImage=jobImage status=status changeStatus='changeStatus'}}
