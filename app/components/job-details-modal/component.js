@@ -4,7 +4,7 @@ import firebase from 'firebase';
 export default Ember.Component.extend({
 
   jobService: Ember.inject.service('job'),
-  
+
   init() {
     this._super(...arguments);
   },
@@ -23,7 +23,8 @@ export default Ember.Component.extend({
   buttonText: 'pending',
   actions:{
     changeStatus(job){
-    this.sendAction('changeStatus');
+      this.get('jobService').changeStatus();
+    /*this.sendAction('changeStatus');
     switch(job.get('status')){
       case 'pending':
         this.set('buttonText','acknowledged');
@@ -39,7 +40,7 @@ export default Ember.Component.extend({
         break;
       case 'completed':
         break;
-      }
+      }*/
     },
   }
 });

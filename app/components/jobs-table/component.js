@@ -37,22 +37,26 @@ export default Ember.Component.extend({
   ],
 
   tableClasses: Ember.Object.create({
-    "table": "table  table-bordered",
+    "table": "table  table-bordered table-responsive",
 
   }),
 
 
   actions: {
     selectJob(table) {
+      if(table.selectedItems.length > 0) {
 
-      let row = Ember.$(event.target).parent();
+        let row = Ember.$(event.target).parent();
 
-      if(".modal" !== row.attr('data-target')) {
-        row.attr("data-toggle",'modal');
-        row.attr("data-target", '.modal');
+          if(".modal" !== row.attr('data-target')) {
+            row.attr("data-toggle",'modal');
+            row.attr("data-target", '.modal');
+          }
+
+        this.get('jobService').selectJob(table);
+
       }
 
-      this.get('jobService').selectJob(table);
     },
   }
 });

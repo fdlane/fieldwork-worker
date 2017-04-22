@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
     assignedTo: DS.attr('string'),
@@ -15,4 +16,13 @@ export default DS.Model.extend({
     scheduleDate: DS.attr('string'),
     status: DS.attr('string'),
     jobImage: DS.attr('string'),
+    include: Ember.computed('assignedTo', 'isActive', 'status', function() {
+      if(this.get('isActive')) {
+        if(this.get('status') !== "Completed") {
+          return true;
+        }
+        return false;
+      }
+      return false;
+    })
 });

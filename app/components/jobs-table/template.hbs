@@ -7,13 +7,9 @@
                 <div class="col col-sm-6 col-md-6 col-lg-6">
                     <h3 class="panel-title">Jobs</h3>
                 </div>
-                <!-- <div class="col col-sm-6 col-md-6 col-lg-6 text-right">
-                    <button type="button" class="btn btn-primary btn-sm">En Route</button>
-                    <button type="button" class="btn btn-primary btn-sm">Completed</button>
-                    </div> -->
             </div>
         </div>
-
+        <div class="panel-body table-responsive">
         {{models-table
             data=jobService.filteredJobs
             columns=columns
@@ -26,6 +22,7 @@
             customClasses=tableClasses
             useFilteringByColumns=false
           }}
+        </div>
     </div>
 </div>
 <div class="col-sm-2 col-md-2 col-lg-2"></div>
