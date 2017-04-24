@@ -22,7 +22,7 @@ export default Ember.Component.extend({
 
   buttonText: 'pending',
   actions:{
-    changeStatus(job){
+    changeStatus(){
       this.get('jobService').changeStatus();
     },
   }
