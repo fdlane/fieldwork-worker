@@ -22,7 +22,6 @@ export default Ember.Service.extend({
 
   filter: Ember.computed('jobs.[]', 'filterValue', function(){
     let jobs = this.get('jobs');
-    let worker = this.get('currentUser.username');
     let filterValue = this.get('filterValue').toLowerCase();
     return jobs.filter(job => {
           if(job.record.get('location').toLowerCase().indexOf(filterValue) !== -1){
@@ -38,14 +37,12 @@ export default Ember.Service.extend({
     });
   }),
 
-  filteredJobs: Ember.computed.map('filter', function(job, index) {
+  filteredJobs: Ember.computed.map('filter', function(job) {
     return job.record;
   }),
 
   selectJob(tableState) {
-      debugger;
       this.set('selectedJob', tableState.selectedItems.objectAt(0));
-      let job = this.get('selectedJob');
       tableState.selectedItems.clear();
   },
 
