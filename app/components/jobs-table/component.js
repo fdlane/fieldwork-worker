@@ -56,7 +56,7 @@ export default Ember.Component.extend({
         this.get('jobService').selectJob(table);
 
       }
-
+      console.log(table);
     },
   }
 });

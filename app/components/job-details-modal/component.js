@@ -24,23 +24,6 @@ export default Ember.Component.extend({
   actions:{
     changeStatus(job){
       this.get('jobService').changeStatus();
-    /*this.sendAction('changeStatus');
-    switch(job.get('status')){
-      case 'pending':
-        this.set('buttonText','acknowledged');
-        break;
-      case 'acknowledged':
-        this.set('buttonText','en route');
-        break;
-      case 'en route':
-        this.set('buttonText','arrived');
-        break;
-      case 'arrived':
-        this.set('buttonText','completed');
-        break;
-      case 'completed':
-        break;
-      }*/
     },
   }
 });

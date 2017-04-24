@@ -33,13 +33,13 @@
 
                <!-- Job Status -->
                <div>
-                   <button type="button" class="btn btn-secondary btn-lg btn-block">{{jobService.currentStatus}}</button>
+                   <button type="button" class="btn btn-secondary btn-lg btn-block" >{{jobService.currentStatus}}</button>
                </div>
 
                <div class="modal-footer">
 
                    <!-- Status button -->
-                   <button id='statusBtn' type="button" class="btn btn-primary btn-sm center-block"{{action 'changeStatus' job}}>{{jobService.nextStatus}}</button>
+                   <button id='statusBtn' type="button" class="btn btn-primary btn-sm center-block" disabled={{if jobService.canChangeStatus false true}} {{action 'changeStatus' job}}>{{jobService.nextStatus}}</button>
                </div>
            </div>
        </div>

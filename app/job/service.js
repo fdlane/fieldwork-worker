@@ -2,9 +2,14 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
 
-  jobs: [],
+  jobs: Ember.computed.setDiff('activeAndAssignedJobs', 'completedJobs'),
+  activeAndAssignedJobs: Ember.computed.intersect('activeJobs', 'assignedJobs'),
+  activeJobs: [],
+  assignedJobs: [],
+  completedJobs: [],
   selectedJob: '',
   statuses: ["En Route", "Arrived", "Completed"],
+  canChangeStatus: true,
 
   currentStatus: Ember.computed.alias('selectedJob.status'),
 
@@ -15,43 +20,43 @@ export default Ember.Service.extend({
 
   filterValue: "",
 
-  filteredJobs: Ember.computed('jobs.[]', 'filterValue', function(){
+  filter: Ember.computed('jobs.[]', 'filterValue', function(){
     let jobs = this.get('jobs');
     let worker = this.get('currentUser.username');
     let filterValue = this.get('filterValue').toLowerCase();
     return jobs.filter(job => {
-        if(job.get('include')) {
-
-          if(job.get('location').toLowerCase().indexOf(filterValue) !== -1){
+          if(job.record.get('location').toLowerCase().indexOf(filterValue) !== -1){
             return true;
           }
-          if(job.get('status').toLowerCase().indexOf(filterValue) !== -1){
+          if(job.record.get('status').toLowerCase().indexOf(filterValue) !== -1){
             return true;
           }
-          if(job.get('category').toLowerCase().indexOf(filterValue) !== -1){
+          if(job.record.get('category').toLowerCase().indexOf(filterValue) !== -1){
             return true;
           }
 
-          return true;
-
-        }
-
-
-
-      return false;
     });
   }),
 
-  selectJob(tableState) {
+  filteredJobs: Ember.computed.map('filter', function(job, index) {
+    return job.record;
+  }),
 
+  selectJob(tableState) {
+      debugger;
       this.set('selectedJob', tableState.selectedItems.objectAt(0));
       let job = this.get('selectedJob');
       tableState.selectedItems.clear();
   },
 
   changeStatus() {
-    this.get('selectedJob').set('status', this.get('nextStatus'));
-    this.get('selectedJob').save();
+    let job = this.get('selectedJob');
+    job.set('status', this.get('nextStatus'));
+    if(this.get('currentStatus') === "Completed") {
+      this.set('canChangeStatus', false);
+    }
+    job.save();
+
   }
 
 
