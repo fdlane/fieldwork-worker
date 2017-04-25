@@ -4,7 +4,7 @@
            <div class="modal-content">
                <div class="modal-header">
                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
-                   <h4 class="modal-title"><i class="text-muted fa fa-user-circle"></i> <strong>{{metaId}}</strong> - Job Name </h4>
+                   <h4 class="modal-title"><i class="text-muted fa fa-user-circle"></i> <strong>{{jobService.selectedJob.metaId}}</strong> - Job Name </h4>
 
                    <!-- Camera Button -->
                    <button type="button" class="btn btn-primary btn-sm center-block"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></button>
@@ -13,7 +13,12 @@
                <div class="modal-body">
                  <table class="pull-left col-md-8 ">
                      <tbody>
-                         {{yield}}
+                       <tr>Location: {{jobService.selectedJob.location}}</tr>
+                       <tr>Current Status: {{jobService.selectedJob.status}}</tr>
+                       <tr></tr>
+                       <tr>Contact Info: {{jobService.selectedJob.contactInfo}}</tr>
+                       <tr></tr>
+                       <tr>Description: {{jobService.selectedJob.description}}</tr>
                      </tbody>
                  </table>
 
@@ -28,13 +33,13 @@
 
                <!-- Job Status -->
                <div>
-                   <button type="button" class="btn btn-secondary btn-lg btn-block">Here goes current job status</button>
+                   <button type="button" class="btn btn-secondary btn-lg btn-block" >{{jobService.currentStatus}}</button>
                </div>
 
                <div class="modal-footer">
 
                    <!-- Status button -->
-                   <button type="button" class="btn btn-primary btn-sm center-block">Status button</button>
+                   <button id='statusBtn' type="button" class="btn btn-primary btn-sm center-block" disabled={{if jobService.canChangeStatus false true}} {{action 'changeStatus' job}}>{{jobService.nextStatus}}</button>
                </div>
            </div>
        </div>
