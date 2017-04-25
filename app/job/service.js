@@ -9,7 +9,7 @@ export default Ember.Service.extend({
   completedJobs: [],
   selectedJob: '',
   statuses: ["En Route", "Arrived", "Completed"],
-  
+
   canChangeStatus: Ember.computed('currentStatus', function() {
     if(this.get('currentStatus') === "Completed") {
       return false;
@@ -58,8 +58,12 @@ export default Ember.Service.extend({
     job.set('status', this.get('nextStatus'));
     job.save();
 
+  },
+
+  updatePhoto(imageName) {
+    let job = this.get('selectedJob');
+    job.set('jobImage', imageName);
+    job.save();
   }
-
-
 
 });

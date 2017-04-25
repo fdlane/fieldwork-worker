@@ -20,8 +20,16 @@ export default Ember.Component.extend({
     });
   },
 
-  buttonText: 'pending',
   actions:{
+    uploadImage(data) {
+      const storage = firebase.storage().ref();
+      const imageRef = storage.child(`images/${data.get('name')}`);
+
+      imageRef.put(data.get('blob')).then(function(snapshot) {
+        console.log('File uploaded: ', `${data.get('name')}`)
+      });
+      this.get('jobService').updatePhoto(`${data.get('name')}`);
+    },
     changeStatus(){
       this.get('jobService').changeStatus();
     },
