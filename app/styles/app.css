@@ -24,10 +24,21 @@ over-ride "Weak" message, show font in dark grey
       float: none;
     }
     .navbar-nav>li>a {
-      padding: 16px 15px;
+      padding: 5px 15px;
       float: right;
     }
 }
+    .navbar-brand {
+      padding: 0px 0px;
+      float: left;
+    }
+
+    .img-brand {
+      padding: 2px 0px;
+      float: left;
+    }
+}
+
 
 
   .progress-bar {
