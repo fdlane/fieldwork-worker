@@ -9,7 +9,14 @@ export default Ember.Service.extend({
   completedJobs: [],
   selectedJob: '',
   statuses: ["En Route", "Arrived", "Completed"],
-  canChangeStatus: true,
+  
+  canChangeStatus: Ember.computed('currentStatus', function() {
+    if(this.get('currentStatus') === "Completed") {
+      return false;
+    }
+
+    return true;
+  }),
 
   currentStatus: Ember.computed.alias('selectedJob.status'),
 
@@ -49,9 +56,6 @@ export default Ember.Service.extend({
   changeStatus() {
     let job = this.get('selectedJob');
     job.set('status', this.get('nextStatus'));
-    if(this.get('currentStatus') === "Completed") {
-      this.set('canChangeStatus', false);
-    }
     job.save();
 
   }
