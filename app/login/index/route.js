@@ -4,7 +4,7 @@ export default Ember.Route.extend({
 
   redirect() {
     if (this.get('session.isAuthenticated')) {
-      this.transitionTo('protected');
+      this.transitionTo('index');
     }
   },
 
@@ -22,7 +22,7 @@ export default Ember.Route.extend({
         let username = email.substring(0, email.indexOf('@'));
         user.username = username;
         this.set('currentUser.content', user);
-        this.transitionTo('protected');
+        this.transitionTo('index');
       }, error => {
         if(error) {
           this.controller.set('invalidCredentials', true);
@@ -39,7 +39,7 @@ export default Ember.Route.extend({
 
     forgotPassword() {
 
-      this.transitionTo('password-reset');
+      this.transitionTo('forgot');
 
     },
   },
