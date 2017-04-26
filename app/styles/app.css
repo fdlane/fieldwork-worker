@@ -2,6 +2,11 @@
 over-ride "Weak" message, show font in dark grey
 */
 
+.navbar-default {
+    background-color: #FFF;
+    border-color: #E7E7E7;
+}
+
 @media (max-width: 990px) {
     .navbar-header {
       float: none;
