@@ -39,7 +39,7 @@ export default Ember.Route.extend({
 
     forgotPassword() {
 
-      this.transitionTo('password-reset');
+      this.transitionTo('forgot');
 
     },
   },
