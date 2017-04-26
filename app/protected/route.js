@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   jobService: Ember.inject.service('job'),
+  workerService: Ember.inject.service('worker'),
 
   model() {
       return Ember.RSVP.hash({
@@ -19,6 +20,11 @@ export default Ember.Route.extend({
           completedJobs: this.get('store').query('job', {
             orderBy: "status",
             equalTo: "Completed"
+          }),
+
+          worker: this.get('store').query('worker', {
+            orderBy: "username",
+            equalTo: this.get('currentUser.username'),
           })
       });
   },
@@ -27,6 +33,13 @@ export default Ember.Route.extend({
     this.set('jobService.assignedJobs', model.jobs.content);
     this.set('jobService.activeJobs', model.activeJobs.content);
     this.set('jobService.completedJobs', model.completedJobs.content);
+    this.set('workerService.worker', model.worker.content.objectAt(0).record);
+  },
+
+  activate() {
+    let worker = this.get('workerService.worker');
+    worker.set('isAvailable', true);
+    worker.save();
   },
 
   actions: {
