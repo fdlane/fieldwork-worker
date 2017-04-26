@@ -2,14 +2,18 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
 
+  firebaseApp: Ember.inject.service(),
+
   jobs: Ember.computed.setDiff('activeAndAssignedJobs', 'completedJobs'),
   activeAndAssignedJobs: Ember.computed.intersect('activeJobs', 'assignedJobs'),
   activeJobs: [],
   assignedJobs: [],
   completedJobs: [],
   selectedJob: '',
+  jobImage: Ember.computed.alias('selectedJob.jobImage'),
+  imageUrl: '',
   statuses: ["En Route", "Arrived", "Completed"],
-  
+
   canChangeStatus: Ember.computed('currentStatus', function() {
     if(this.get('currentStatus') === "Completed") {
       return false;
@@ -51,6 +55,7 @@ export default Ember.Service.extend({
   selectJob(tableState) {
       this.set('selectedJob', tableState.selectedItems.objectAt(0));
       tableState.selectedItems.clear();
+      this.getFile();
   },
 
   changeStatus() {
@@ -58,8 +63,33 @@ export default Ember.Service.extend({
     job.set('status', this.get('nextStatus'));
     job.save();
 
-  }
+  },
 
+  updatePhoto(data) {
 
+    const storage = this.get('firebaseApp').storage().ref();
+    const imageRef = storage.child(`images/${data.get('name')}`);
+    let job = this.get('selectedJob');
+    let service = this;
+
+    imageRef.put(data.get('blob')).then(function() {
+      job.set('jobImage', `${data.get('name')}`);
+      job.save();
+      service.getFile();
+    });
+  },
+
+  getFile() {
+    const storage = this.get('firebaseApp').storage();
+    const imageRef = storage.ref(`images/${this.get('jobImage')}`);
+    return imageRef.getDownloadURL().then((url) => {
+      this.set('imageUrl', url);
+    },
+    (error) => {
+      if(error) {
+        this.set('imageUrl', '');
+      }
+    });
+  },
 
 });

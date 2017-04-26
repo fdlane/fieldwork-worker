@@ -7,7 +7,12 @@
                    <h4 class="modal-title"><i class="text-muted fa fa-user-circle"></i> <strong>{{jobService.selectedJob.metaId}}</strong> - Job Name </h4>
 
                    <!-- Camera Button -->
-                   <button type="button" class="btn btn-primary btn-sm center-block"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></button>
+                   {{#file-upload name="photos"
+                                  accept="image/*"
+                                  multiple=false
+                                  onfileadd=(action "uploadImage")}}
+                   <a class="btn btn-primary btn-sm"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></a>
+                   {{/file-upload}}
                </div>
 
                <div class="modal-body">
@@ -24,7 +29,7 @@
 
                    <!-- Modal photo -->
                    <div class="col-md-4">
-                       <img src="{{imageUrl}}" width="150px" height="150px">
+                       <img src="{{jobService.imageUrl}}" width="150px" height="150px">
                    </div>
 
                    <div class="clearfix"></div>
