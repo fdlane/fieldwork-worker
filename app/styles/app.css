@@ -23,7 +23,7 @@ over-ride "Weak" message, show font in dark grey
     .navbar-nav>li {
       float: none;
     }
-    .navbar-nav>li>a 
+    .navbar-nav>li>a {
       padding: 5px 15px;
       float: right;
     }
