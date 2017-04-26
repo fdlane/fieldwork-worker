@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 
   firebaseApp: Ember.inject.service(),
+  workerService: Ember.inject.service('worker'),
 
   jobs: Ember.computed.setDiff('activeAndAssignedJobs', 'completedJobs'),
   activeAndAssignedJobs: Ember.computed.intersect('activeJobs', 'assignedJobs'),
@@ -62,6 +63,14 @@ export default Ember.Service.extend({
     let job = this.get('selectedJob');
     job.set('status', this.get('nextStatus'));
     job.save();
+
+    if(!this.get('canChangeStatus')) {
+      let worker = this.get('workerService.worker');
+      let newJobCount = worker.get('jobCount') - 1;
+      worker.set('jobCount', newJobCount);
+      worker.save();
+      this.set('workerService.worker', worker);
+    }
 
   },
 
